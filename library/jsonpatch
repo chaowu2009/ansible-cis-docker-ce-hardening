@@ -91,9 +91,7 @@ def main():
         if indent.isdigit():
             indent = int(indent)
         else:
-            module.fail_json(
-                msg="Indent should be integer: %s" %
-                indent)
+            module.fail_json(msg="Indent should be integer: %s" %indent)
 
     if state == 'absent':
         value = None
@@ -111,10 +109,8 @@ def main():
     # Try to parse in the target XML file
     try:
         data = json_load(infile)
-    except ValueError, e:
-        module.fail_json(
-            msg="Error while parsing file: %s" %
-            str(e))
+    except :
+        module.fail_json(msg="Error while parsing file: %s" %str(json_file))
 
     changed = False
 
